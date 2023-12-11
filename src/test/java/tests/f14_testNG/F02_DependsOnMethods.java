@@ -20,6 +20,18 @@ public class F02_DependsOnMethods {
         bagli olunan method calisip PASSED olursa, bagli olan kendisi de calisir
 
      */
+ /*
+      iki test method'u dependsOnMethods ile birbirine baglandiysa
+
+      sadece baglanan method'u calistirmak isterseniz,
+      dependsOnmethods ozelligi tanimli oldugundan once
+      bagli olunan method'u calistirir,
+      o test passed olursa bagli olan test'i de calistirir.
+
+      Ancak bagli olan testler ikiden fazla ise
+      2.testten sonraki test method'larini calistirmak isterseniz
+      "no tests found" uyari verir ve hic bir testi calistirmaz
+     */
 
 
 

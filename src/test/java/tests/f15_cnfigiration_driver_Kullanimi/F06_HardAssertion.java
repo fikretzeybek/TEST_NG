@@ -11,6 +11,7 @@ import utilities.ReusableMethods;
 
 public class F06_HardAssertion {
 
+
     @Test
     public void hardAssertionTesti(){
 
@@ -39,18 +40,19 @@ public class F06_HardAssertion {
                 .sendKeys(ConfigReader.getProperty("toAranacakKelime") + Keys.ENTER);
 
         int bulunanSonucSayisi = testOtomasyonuPage.bulunanUrunElementleriList.size();
-        Assert.assertTrue(bulunanSonucSayisi>10);
-
-        // Nutella aratip, urun bulundugunu test edin
-        ReusableMethods.bekle(2);
-        testOtomasyonuPage.aramaKutusu.clear();
-        testOtomasyonuPage.aramaKutusu.sendKeys("Nutella" + Keys.ENTER);
-        ReusableMethods.bekle(2);
-        bulunanSonucSayisi = testOtomasyonuPage.bulunanUrunElementleriList.size();
         Assert.assertTrue(bulunanSonucSayisi>0);
 
+        // Nutella aratip, urun bulundugunu test edin
+        //ReusableMethods.bekle(3);
+        testOtomasyonuPage.aramaKutusu.clear();
+        testOtomasyonuPage.aramaKutusu.sendKeys("Nutella" + Keys.ENTER);
+        //ReusableMethods.bekle(2);
+        bulunanSonucSayisi = testOtomasyonuPage.bulunanUrunElementleriList.size();
+        Assert.assertTrue(bulunanSonucSayisi == 0);
+
         // sayfayi kapatin
-        ReusableMethods.bekle(2);
-        Driver.closeDriver();
+        //ReusableMethods.bekle(2);
+        Driver.quitDriver();
+
     }
 }

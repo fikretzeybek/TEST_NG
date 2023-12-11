@@ -11,6 +11,17 @@ import utilities.ReusableMethods;
 
 public class F02_ConfigurationPropertiesKullanimi {
 
+     /*
+        POM'de hedef test class'inda
+        manuel olarak hic bir Test Data'si GIRMEMEKTIR
+
+        Test datalari :
+        1- Kullanacagimiz WebDriver : Driver class'indan dinamik olarak kullaniyoruz
+        2- Locate : Locate'leri pages sayfalarindan dinamik olarak kullaniyoruz
+        3- kullanilan Url, aranan kelime, expected icerik, dogru kullanici adi,
+           yanlis kullanici adi, yanlis sifre... gibi datalar
+     */
+
     @Test
     public void aramaTesti() {
 

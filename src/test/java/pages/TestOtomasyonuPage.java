@@ -12,6 +12,7 @@ public class TestOtomasyonuPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+
     @FindBy(id ="global-search")
     public WebElement aramaKutusu;
 

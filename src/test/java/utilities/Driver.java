@@ -70,8 +70,9 @@ public class Driver {
     public static void closeDriver() {
         driver.close();
         if (driver != null) {
-            driver = null;
+
         }
+        driver = null;
     }
 
     public static void quitDriver() {
