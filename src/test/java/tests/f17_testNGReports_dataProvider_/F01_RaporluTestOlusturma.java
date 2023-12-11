@@ -46,8 +46,6 @@ public class F01_RaporluTestOlusturma extends TestBaseRapor {
 
         extentTest.pass("acilan urun sayfasinda urun isminin\ncase sensitive olmadan belirlenen arama kelimesi icerdigini test eder");
 
-       Driver.closeDriver();
-       extentTest.info("Sayfayi kapatir");
 
     }
 }
