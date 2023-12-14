@@ -10,8 +10,8 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.time.Duration;
 
 public class Driver {
-    private Driver() {
 
+    private Driver(){
         // POM'de Driver class'indaki getDriver() ve closeDriver()'in
         // static yolla kullanilmasi ongorulmustur.
         // obje olusturma ile bu method'larin kullanilmamasi
@@ -33,23 +33,23 @@ public class Driver {
 
     static WebDriver driver; // null
 
-    public static WebDriver getDriver() {
+    public static WebDriver getDriver(){
 
         String browser = ConfigReader.getProperty("browser");
 
-        if (driver == null) {
+        if (driver == null){
 
-            switch (browser) {
+            switch (browser){
 
-                case "firefox":
+                case "firefox" :
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
-                case "safari":
+                case "safari"   :
                     WebDriverManager.safaridriver().setup();
                     driver = new SafariDriver();
                     break;
-                case "edge":
+                case "edge" :
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
                     break;
@@ -63,21 +63,23 @@ public class Driver {
         }
 
 
+
         return driver;
     }
 
 
-    public static void closeDriver() {
-        driver.close();
-        if (driver != null) {
+    public static void closeDriver(){
 
+        if (driver != null){
+            driver.close();
+            driver = null;
         }
-        driver = null;
     }
 
-    public static void quitDriver() {
-        driver.quit();
-        if (driver != null) {
+    public static void quitDriver(){
+
+        if (driver != null){
+            driver.quit();
             driver = null;
         }
     }

@@ -5,7 +5,7 @@
     <test name="method'lar">
 
         <classes>
-            <class name="tests.f15_cnfigiration_driver_Kullanimi.F04_NegatifLoginTesti">
+            <class name="tests.f15_configuration_driver_Kullanimi.F04_NegatifLoginTesti">
                 <!-- Bir class'daki tum method'lar calisacaksa tek tek method'lari secmeye gerek yok
                  ama calisacaklari veya calismayacaklari ozellikle belirlemek istersek
                  method secimi yapilabilir

@@ -26,8 +26,8 @@
     <test name="Login testleri">
         
         <classes>
-            <class name="tests.f15_cnfigiration_driver_Kullanimi.F03_PozitifLoginTesti"></class>
-            <class name="tests.f15_cnfigiration_driver_Kullanimi.F04_NegatifLoginTesti"></class>
+            <class name="tests.f15_configuration_driver_Kullanimi.F03_PozitifLoginTesti"></class>
+            <class name="tests.f15_configuration_driver_Kullanimi.F04_NegatifLoginTesti"></class>
             <class name="tests.f16_softAssertion_xmlFiles.F02_SoftAssertion"></class>
         </classes>
     </test>

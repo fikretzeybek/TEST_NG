@@ -17,7 +17,7 @@
         <classes>
             <class name="tests.f14_testNG.F02_DependsOnMethods"></class>
             <class name="tests.f14_testNG.F05_PageClassKullanimi"></class>
-            <class name="tests.f15_cnfigiration_driver_Kullanimi.F04_NegatifLoginTesti">
+            <class name="tests.f15_configuration_driver_Kullanimi.F04_NegatifLoginTesti">
                 <methods>
                     <exclude name="gecersizPasswordTesti"></exclude>
                 </methods>

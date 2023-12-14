@@ -26,7 +26,7 @@
     
     <test name="paralel 2.browser">
         <packages>
-            <package name="tests.f15_cnfigiration_driver_Kullanimi"></package>
+            <package name="tests.f15_configuration_driver_Kullanimi"></package>
         </packages>
     </test>
     

@@ -12,7 +12,6 @@ public class TestOtomasyonuPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
     @FindBy(id ="global-search")
     public WebElement aramaKutusu;
 
@@ -39,5 +38,7 @@ public class TestOtomasyonuPage {
 
     @FindBy(xpath = "//span[text()='Logout']")
     public WebElement logoutLinki;
+
+
 
 }

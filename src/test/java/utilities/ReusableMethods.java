@@ -1,15 +1,14 @@
 package utilities;
 
-
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,57 +18,59 @@ import java.util.Set;
 
 public class ReusableMethods {
 
-    public static List<String> stringListeDonustur(List<WebElement> elementlerListesi) {
+    public static List<String> stringListeDonustur(List<WebElement> elementlerListesi){
 
         List<String> stringlerListesi = new ArrayList<>();
 
         for (WebElement each : elementlerListesi
-        ) {
+             ) {
 
             stringlerListesi.add(each.getText());
         }
 
         return stringlerListesi;
     }
-    public static void bekle(int saniye) {
+
+    public static void bekle(int saniye){
 
         try {
-            Thread.sleep(saniye * 1000);
+            Thread.sleep(saniye*1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-    public static void titleIleSayfaDegistir( String hedefSayfaTitle) {
+
+    public static void titleIleSayfaDegistir(String hedefSayfaTitle){
 
         Set<String> tumWhdSeti = Driver.getDriver().getWindowHandles();
 
         for (String each : tumWhdSeti
-        ) {
+             ) {
 
             String eachTitle = Driver.getDriver().switchTo().window(each).getTitle();
-            if (eachTitle.equals(hedefSayfaTitle)) {
+            if (eachTitle.equals(hedefSayfaTitle)){
                 break;
             }
         }
-
 
     }
 
     public static String ilkSayfaWhdIleIkinciSayfaWhdBul(WebDriver driver, String ilkSayfaWhd) {
 
-        Set<String> tumWhdSeti = driver.getWindowHandles();
+        Set<String > tumWhdSeti = driver.getWindowHandles();
 
         tumWhdSeti.remove(ilkSayfaWhd);
 
-        for (String each : tumWhdSeti
-        ) {
+        for (String each:tumWhdSeti
+             ) {
             return each;
         }
 
         return null; // bu satirin hic calismayacagini biliyoruz
-        // sadece javanin endiselerini gidermek icin yazdik
+                     // sadece javanin endiselerini gidermek icin yazdik
     }
-    public static void tumSayfaTakeScreenshot(WebDriver driver) {
+
+    public static void tumSayfaTakeScreenshot(WebDriver driver){
         // tum sayfanin fotografini cekip kaydedin
 
         // 1.adim tss objesi olustur
@@ -84,8 +85,8 @@ public class ReusableMethods {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
         String dinamikDosyaYolu = "target/screenshots/tumSayfaScreenshot" +
-                localDateTime.format(istenenFormat) +
-                ".jpg";
+                                    localDateTime.format(istenenFormat)+
+                                    ".jpg";
 
         File tumSayfaScreenshot = new File(dinamikDosyaYolu);
 
@@ -96,14 +97,15 @@ public class ReusableMethods {
         // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
 
         try {
-            FileUtils.copyFile(geciciDosya, tumSayfaScreenshot);
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         ReusableMethods.bekle(5);
     }
-    public static void tumSayfaTakeScreenshot(String testAdi, WebDriver driver) {
+
+    public static void tumSayfaTakeScreenshot(String testAdi,WebDriver driver){
         // tum sayfanin fotografini cekip kaydedin
 
         // 1.adim tss objesi olustur
@@ -117,10 +119,10 @@ public class ReusableMethods {
 
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
-        String dinamikDosyaYolu = "target/screenshots/" +
+        String dinamikDosyaYolu = "target/screenshots/"+
                 testAdi
                 +
-                localDateTime.format(istenenFormat) +
+                localDateTime.format(istenenFormat)+
                 ".jpg";
 
         File tumSayfaScreenshot = new File(dinamikDosyaYolu);
@@ -132,14 +134,15 @@ public class ReusableMethods {
         // 4.adim : gecici dosyayi, asil dosyaya kopyalayalim
 
         try {
-            FileUtils.copyFile(geciciDosya, tumSayfaScreenshot);
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         ReusableMethods.bekle(5);
     }
-    public static void istenenWebelementScreenshot(WebElement istenenWebelement) {
+
+    public static void istenenWebelementScreenshot(WebElement istenenWebelement){
 
         // 1.adim screenshot alacagimiz webelementi locate et
 
@@ -147,7 +150,7 @@ public class ReusableMethods {
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter istenenFormat = DateTimeFormatter.ofPattern("yyMMddHHmmss");
         String dinamikDosyaYolu = "target/screenshots/istenenWebelementScreenshot" +
-                localDateTime.format(istenenFormat) +
+                localDateTime.format(istenenFormat)+
                 ".jpg";
 
 
@@ -160,7 +163,7 @@ public class ReusableMethods {
         // 4.adim gecici dosyayi asil dosyaya kopyalayalim
 
         try {
-            FileUtils.copyFile(geciciDosya, istenenWebelementScreenshot);
+            FileUtils.copyFile(geciciDosya,istenenWebelementScreenshot);
         } catch (IOException e) {
             System.out.println("Screenshot kopyalanamadi");
             throw new RuntimeException(e);
@@ -168,38 +171,7 @@ public class ReusableMethods {
 
 
     }
-    public static void scrollYap(WebDriver driver,WebElement scrollYapilacakElemet){
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) driver;
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView();",scrollYapilacakElemet);
-    }
-    public static int iframeSayisiniBul(WebDriver driver) {
-        return driver.findElements(By.tagName("iframe")).size();
-    }
-    public static int iframeIndexiniBul(WebDriver driver, String iframeSrc) {
-        int index = 1;
-        List<WebElement> iframeElementLeri = driver.findElements(By.tagName("iframe"));
-        for (WebElement each : iframeElementLeri) {
-            if (each.getAttribute("src").contains(iframeSrc)) {
-                return index;
-            }
-            index++;
-        }
-        return -1; // Eğer iframe bulunamazsa -1 döndürülür
-    }
-    public static void clickPlayButonu(WebDriver driver, String iframeSrc, String playButonXpath) {
-        int iframeIndex = iframeIndexiniBul(driver, iframeSrc);
-        if (iframeIndex != -1) {
-            driver.switchTo().frame(iframeIndex - 1); // Index' i 0' dan baslatmak icin 1 çıkarılır
-            // Bekleme yapin, sureyi ayarlayin
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            WebElement playButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(playButonXpath)));
-            playButton.click();
-            driver.switchTo().defaultContent();  //iframe' den cikis, isterseniz @Test sayfanizda
-            // kendiniz de yapabilirsiniz
-        } else {
-            System.out.println("Belirtilen src değerine sahip iframe bulunamadı.");
-        }
-    }
+
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -214,4 +186,3 @@ public class ReusableMethods {
         return target;
     }
 }
-
